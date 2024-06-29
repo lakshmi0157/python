@@ -1,0 +1,10 @@
+def create_number_square_tuples(limit):
+    
+    number_square_tuples = [(i, i**2) for i in range(45, limit + 1)]
+    return number_square_tuples
+
+# Example usage
+limit = int(input("Enter the upper limit: "))
+result = create_number_square_tuples(limit)
+print(f"List of tuples (number, square of number) from 1 to {limit}:")
+print(result)
