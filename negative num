@@ -1,0 +1,19 @@
+def count_negative_numbers(numbers):
+    count = 0
+    for num in numbers:
+        if num < 0:
+            count += 1
+    return count
+
+def main():
+    # Sample input
+    numbers = [16, -18, 27, -16, 23, -21, 19]
+
+    # Count negative numbers
+    negative_count = count_negative_numbers(numbers)
+
+    # Output
+    print("Number of negative numbers in List of elements =", negative_count)
+
+if __name__ == "__main__":
+    main()
