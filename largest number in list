@@ -1,0 +1,14 @@
+def nth_largest_number(nums, n):
+    # Sort the list in descending order
+    nums.sort(reverse=True)
+    # Access the (n-1)th element
+    if n <= len(nums):
+        return nums[n-1]
+    else:
+        return "Invalid value of N"
+
+# Example usage:
+nums = [14, 67, 48, 23, 5, 62]
+N = 4
+result = nth_largest_number(nums, N)
+print("The", N, "th largest number is:", result)
