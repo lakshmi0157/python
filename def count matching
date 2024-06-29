@@ -1,0 +1,26 @@
+def count_matching_characters(s1, s2):
+    """
+    This function returns the number of matches where two strings have the same character at the same index.
+
+    :param s1: The first string.
+    :param s2: The second string.
+    :return: The number of matching characters at the same index in both strings.
+    """
+    # Find the length of the shorter string to avoid index out of range errors
+    min_length = min(len(s1), len(s2))
+    
+    # Initialize the match count to 0
+    match_count = 0
+    
+    # Iterate through both strings up to the length of the shorter string
+    for i in range(min_length):
+        if s1[i] == s2[i]:
+            match_count += 1
+    
+    return match_count
+
+# Example usage
+s1 = input("Enter the first string (s1): ")
+s2 = input("Enter the second string (s2): ")
+result = count_matching_characters(s1, s2)
+print(f"The number of matching characters at the same index is: {result}")
