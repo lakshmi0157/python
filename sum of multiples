@@ -1,0 +1,17 @@
+def sum_of_multiples(limit):
+    """
+    This function computes the sum of all multiples of 3 and 5 below the given limit.
+
+    :param limit: The upper limit (non-inclusive) for finding multiples.
+    :return: The sum of all multiples of 3 and 5 below the limit.
+    """
+    total_sum = 0
+    for i in range(limit):
+        if i % 3 == 0 or i % 5 == 0:
+            total_sum += i
+    return total_sum
+
+# Example usage
+limit = 200
+result = sum_of_multiples(limit)
+print(f"The sum of all multiples of 3 and 5 below {limit} is: {result}")
