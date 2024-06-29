@@ -1,0 +1,49 @@
+def print_spiral(matrix):
+    if not matrix:
+        return []
+
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    top_row, bottom_row = 0, rows - 1
+    left_col, right_col = 0, cols - 1
+
+    spiral = []
+
+    while top_row <= bottom_row and left_col <= right_col:
+
+        # Print top row
+        for i in range(left_col, right_col + 1):
+            spiral.append(matrix[top_row][i])
+
+        # Print right column
+        for i in range(top_row + 1, bottom_row + 1):
+            spiral.append(matrix[i][right_col])
+
+        # Print bottom row (if it exists)
+        if top_row < bottom_row:
+            for i in range(right_col - 1, left_col - 1, -1):
+                spiral.append(matrix[bottom_row][i])
+
+        # Print left column (if it exists)
+        if left_col < right_col:
+            for i in range(bottom_row - 1, top_row, -1):
+                spiral.append(matrix[i][left_col])
+
+        top_row += 1
+        bottom_row -= 1
+        left_col += 1
+        right_col -= 1
+
+    return spiral
+
+# Example usage:
+matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+]
+
+result = print_spiral(matrix)
+print(result)
