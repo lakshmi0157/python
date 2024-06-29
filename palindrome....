@@ -1,0 +1,19 @@
+def is_palindrome(s):
+    # Convert the string to lowercase and remove non-alphanumeric characters
+    s = ''.join(char.lower() for char in s if char.isalnum())
+    
+    # Compare the string with its reverse
+    return s == s[::-1]
+
+def main():
+    # Sample input
+    string = "A man, a plan, a canal, Panama"
+
+    # Check if it's a palindrome
+    if is_palindrome(string):
+        print("It's a Palindrome")
+    else:
+        print("It's not a Palindrome")
+
+if __name__ == "__main__":
+    main()
