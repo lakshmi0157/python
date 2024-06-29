@@ -1,0 +1,16 @@
+def sum_of_squares(N):
+    """
+    This function returns the sum of the series 12 + 22 + ... + N^2.
+
+    :param N: The last number in the series.
+    :return: The sum of the series.
+    """
+    sum = 0
+    for i in range(1, N+1):
+        sum += i**2
+    return sum
+
+# Example usage
+N = int(input("Enter the value of N: "))
+result = sum_of_squares(N)
+print(f"The sum of squares up to {N}^2 is: {result}")
