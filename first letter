@@ -1,0 +1,3 @@
+sentence = "the cat on the wall"
+first_letters = '.'.join(word[0] for word in sentence.split())
+print(first_letters)
