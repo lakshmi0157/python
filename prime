@@ -1,0 +1,31 @@
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def non_prime_numbers(A, B):
+    non_primes = [num for num in range(A, B+1) if not is_prime(num)]
+    return non_primes
+
+def main():
+    # Sample input
+    A = 12
+    B = -19
+
+    # Find non-prime numbers between A and B
+    non_primes = non_prime_numbers(min(A, B), max(A, B))
+
+    # Output
+    print("Non-prime numbers between", A, "and", B, ":", non_primes)
+
+if __name__ == "__main__":
+    main()
