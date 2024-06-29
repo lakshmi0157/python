@@ -1,0 +1,18 @@
+def find_lsd_msd(number):
+    # Convert the number to a string to easily access its digits
+    num_str = str(number)
+    
+    # Least Significant Digit (LSD) is the last digit
+    lsd = num_str[-1]
+    
+    # Most Significant Digit (MSD) is the first digit
+    msd = num_str[0]
+    
+    return lsd, msd
+
+# Example usage
+number = 1010101
+lsd, msd = find_lsd_msd(number)
+print(f"Number: {number}")
+print(f"Least Significant Digit (LSD): {lsd}")
+print(f"Most Significant Digit (MSD): {msd}")
