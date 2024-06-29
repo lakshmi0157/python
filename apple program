@@ -1,0 +1,15 @@
+def sort_by_length(lst):
+    return sorted(lst, key=len)
+
+def main():
+    # Sample input
+    lst = ["apple", "banana", "cherry", "date", "elderberry"]
+
+    # Sort the list according to the length of the elements
+    sorted_lst = sort_by_length(lst)
+
+    # Output
+    print("Sorted list:", sorted_lst)
+
+if __name__ == "__main__":
+    main()
