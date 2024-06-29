@@ -1,0 +1,91 @@
+def evaluate_expression(expression):
+    # Remove whitespaces from the expression
+    expression = expression.replace(" ", "")
+
+    # Stack to keep track of operands and operators
+    operands = []
+    operators = []
+
+    # Function to perform the calculation for operators
+    def apply_operator():
+        if len(operands) < 2 or len(operators) == 0:
+            return
+        b = operands.pop()
+        a = operands.pop()
+        operator = operators.pop()
+        if operator == '+':
+            operands.append(a + b)
+        elif operator == '-':
+            operands.append(a - b)
+        elif operator == '*':
+            operands.append(a * b)
+        elif operator == '/':
+            operands.append(a / b)
+
+    # Iterate through each character in the expression
+    i = 0
+    while i < len(expression):
+        if expression[i].isdigit():
+            # Extract the number
+            j = i
+            while j < len(expression) and expression[j].isdigit():
+                j += 1
+            operands.append(int(expression[i:j]))
+            i = j
+        elif expression[i] in '+-*/':
+            # Process the operator
+            while operators and operators[-1] in '*/':
+                apply_operator()
+            operators.append(expression[i])
+            i += 1
+        elif expression[i] == '(':
+            # Start of a sub-expression, find its end and evaluate it recursively
+            j = i + 1
+            level = 1
+            while j < len(expression):
+                if expression[j] == '(':
+                    level += 1
+                elif expression[j] == ')':
+                    level -= 1
+                    if level == 0:
+                        break
+                j += 1
+            operands.append(evaluate_expression(expression[i + 1:j]))
+            i = j + 1
+        else:
+            # Invalid character
+            raise ValueError("Invalid character in expression")
+        
+    # Apply remaining operators
+    while operators:
+        apply_operator()
+
+    # The result is the only remaining element in the operands stack
+    return operands[0]
+
+def day_of_the_week(day, month, year):
+    # Dictionary to map the day number to its corresponding name
+    days_of_week = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
+
+    # List of the number of days in each month
+    month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    # Calculate the day of the week using Zeller's Congruence algorithm
+    if month < 3:
+        month += 12
+        year -= 1
+    q = day
+    m = month
+    K = year % 100
+    J = year // 100
+    h = (q + (13 * (m + 1)) // 5 + K + (K // 4) + (J // 4) - (2 * J)) % 7
+
+    return days_of_week[h]
+
+# Example usage:
+day = 31
+month = 8
+year = 2019
+
+day_of_week = day_of_the_week(day, month, year)
+print("Output:", day_of_week)
