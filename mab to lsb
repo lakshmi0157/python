@@ -1,0 +1,20 @@
+def display_msb_lsb(number):
+    # Calculate the number of bits in the integer
+    num_bits = number.bit_length()
+
+    # Mask for the MSB (1 followed by zeros)
+    msb_mask = 1 << (num_bits - 1)
+    # Mask for the LSB (just 1)
+    lsb_mask = 1
+
+    # Extract the MSB and LSB using bitwise AND
+    msb = (number & msb_mask) >> (num_bits - 1)
+    lsb = number & lsb_mask
+
+    return msb, lsb
+
+# Example usage:
+number = 1267899
+msb, lsb = display_msb_lsb(number)
+print("MSB:", msb)
+print("LSB:", lsb)
