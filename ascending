@@ -1,0 +1,21 @@
+def get_sorted_list():
+    """
+    This function prompts the user to enter a list of values, sorts the list, and prints the sorted list.
+    """
+    # Prompt user to enter list values separated by spaces
+    values = input("Enter the list values separated by spaces: ")
+    
+    # Split the input string into a list of strings
+    values_list = values.split()
+    
+    # Convert the list of strings to a list of integers
+    values_list = [int(value) for value in values_list]
+    
+    # Sort the list
+    values_list.sort()
+    
+    # Print the sorted list
+    print("Sorted list:", values_list)
+
+# Example usage
+get_sorted_list()
